@@ -1,0 +1,13 @@
+Rahul Jangir
+Aspiring Full-Stack Developer
+
+Skills:
+- React.js
+- Node.js
+- JavaScript
+- MongoDB
+- HTML/CSS
+
+Experience:
+- Built student profile and ticket management web apps
+- Developed frontend UI components and responsive layouts

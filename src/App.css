@@ -1,38 +1,326 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #07111f 0%, #13243d 45%, #1d4ed8 100%);
+  color: #f8fafc;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: -1;
+  animation: floatGlow 8s ease-in-out infinite alternate;
+}
+
+body::before {
+  top: -80px;
+  left: -50px;
+  background: rgba(56, 189, 248, 0.35);
+}
+
+body::after {
+  right: -70px;
+  bottom: -90px;
+  background: rgba(192, 132, 252, 0.35);
+  animation-delay: 3s;
+}
+
+.portfolio-shell {
+  padding: 24px 20px 60px;
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.25);
+}
+
+.brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: #dbeafe;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #38bdf8;
+}
+
+.hero {
+  max-width: 1100px;
+  margin: 0 auto 28px;
+  padding: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.3);
+  animation: fadeUp 0.8s ease;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  background: rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  margin-bottom: 14px;
+  color: #f8fafc;
+}
+
+.hero-text {
+  max-width: 620px;
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hero-badge {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e0f2fe;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: pulseFloat 3s ease-in-out infinite;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  animation: fadeUp 0.95s ease;
+}
+
+.card {
+  position: relative;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 24px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 12px 36px rgba(2, 6, 23, 0.18);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(2, 6, 23, 0.24);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  padding: 1px;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.7), rgba(129, 140, 248, 0.7));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card h2 {
+  margin-bottom: 14px;
+  font-size: 1.3rem;
+  color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card p,
+.card li {
+  color: #e2e8f0;
+  margin: 8px 0;
+  line-height: 1.6;
 }
 
-.App-link {
-  color: #61dafb;
+.project {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 15px;
+  border-radius: 16px;
+  margin-top: 14px;
+  border-left: 4px solid #38bdf8;
+  transition: transform 0.25s ease, background 0.25s ease;
 }
 
-@keyframes App-logo-spin {
+.project:hover {
+  transform: translateX(6px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.project h3 {
+  color: #7dd3fc;
+  margin-bottom: 6px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  transition: transform 0.2s ease;
+}
+
+li:hover {
+  transform: translateX(6px);
+  color: #7dd3fc;
+}
+
+@keyframes fadeUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatGlow {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(30px, -20px) scale(1.08);
+  }
+}
+
+@keyframes pulseFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-badge {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-shell {
+    padding: 14px 12px 40px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 24px;
+  }
+
+  .card {
+    padding: 18px;
   }
 }
